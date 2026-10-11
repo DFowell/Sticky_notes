@@ -1,0 +1,34 @@
+{% extends "notes/base.html" %}
+
+{% block title %}All Notes | Sticky Notes{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-4">Your notes</h1>
+
+{% if notes %}
+<div class="row g-4">
+    {% for note in notes %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="sticky-note">
+            <h2 class="h5">
+                <a href="{{ note.get_absolute_url }}">{{ note.title }}</a>
+            </h2>
+            <p class="note-body">{{ note.content|truncatewords:30|linebreaksbr }}</p>
+            <div class="note-footer">
+                <small>{{ note.updated_at|date:"d M Y, H:i" }}</small>
+                <span>
+                    <a class="btn btn-sm btn-outline-dark" href="{% url 'notes:update' note.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger" href="{% url 'notes:delete' note.pk %}">Delete</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center text-muted py-5">
+    <p class="fs-5">You have no notes yet.</p>
+    <a class="btn btn-dark" href="{% url 'notes:create' %}">Create your first note</a>
+</div>
+{% endif %}
+{% endblock %}

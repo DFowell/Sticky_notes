@@ -1,0 +1,63 @@
+body {
+    background: #f1ece2;
+    min-height: 100vh;
+}
+
+.app-navbar {
+    background: #ffd54f;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.sticky-note {
+    background: #fff59d;
+    padding: 1.25rem;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px 2px 14px 2px;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sticky-note a {
+    color: #333;
+    text-decoration: none;
+}
+
+.sticky-note h2 a:hover {
+    text-decoration: underline;
+}
+
+/* Slightly rotated, colourful notes in the grid */
+.col-lg-4:nth-child(3n + 1) .sticky-note { transform: rotate(-1.5deg); }
+.col-lg-4:nth-child(3n + 2) .sticky-note { transform: rotate(1deg); background: #ffab91; }
+.col-lg-4:nth-child(3n + 3) .sticky-note { transform: rotate(-0.5deg); background: #a5d6a7; }
+.col-lg-4:nth-child(4n) .sticky-note     { background: #90caf9; }
+
+.sticky-note:hover {
+    transform: rotate(0deg) scale(1.03) !important;
+    box-shadow: 6px 10px 18px rgba(0, 0, 0, 0.3);
+}
+
+.note-body {
+    flex-grow: 1;
+    word-wrap: break-word;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sticky-note-large {
+    min-height: 0;
+    transform: none;
+}
+
+.sticky-note-large:hover {
+    transform: none !important;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
+}
